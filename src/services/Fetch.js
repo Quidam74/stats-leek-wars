@@ -4,34 +4,55 @@ const baseUrl = 'https://leekwars.com/'
 
 export default class Fetch {
   constructor () {
-    this.getAll()
     this.weapons = ''
     this.chips = ''
-    this.constans = ''
+    this.constants = ''
+    this.effect = []
+    this.getAll()
   }
 
-  async getAll () {
-    await this.getAllWeapon()
-    await this.getAllChips()
-    await this.getAllConstant()
+  getAllEffect () {
+    this.constants.forEach((elem, index) => {
+      if (elem.name.indexOf('EFFECT_') === 0) {
+        let effect = elem.name
+        delete elem['name']
+        this.effect[effect] = elem
+      }
+    })
+  }
+
+  getAll () {
+    this.getAllConstant().then(() => {
+      this.getAllWeapon()
+      this.getAllChips()
+    })
   }
 
   getAllWeapon () {
     this.fetch(endpoint.weapons.get).then((value) => {
-      this.weapons = value
+      this.weapons = value.weapons
     })
   }
 
   getAllChips () {
     this.fetch(endpoint.chips.get).then((value) => {
-      this.chips = value
+      this.chips = value.chips
+      this.sortChips()
     })
   }
 
-  getAllConstant () {
+  async getAllConstant () {
     this.fetch(endpoint.constants.get).then((value) => {
-      this.constans = value
+      this.constants = value.constants
+      this.getAllEffect()
     })
+  }
+
+  sortChips () {
+    console.log(this.chips)
+    // this.chips.forEach((elem, index) => {
+    // console.log(elem)
+    // })
   }
 
   fetch (endpoint, params = {}) {
