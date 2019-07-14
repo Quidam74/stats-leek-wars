@@ -6,41 +6,22 @@
 </template>
 
 <script>
+  import Fetch from '../services/Fetch'
+
   export default {
     name: 'Main',
     components: {},
     props: {},
     mounted () {
-      this.getAllVar()
+      let a = new Fetch()
+      console.log(a)
+      // this.getAllVar()
     },
     data () {
-      return {
-        chips: null,
-        weapon: null,
-        constant: null,
-        chipsDamage: null,
-        chipsHeal: null,
-        chipsBoost: null,
-        chipsShield: null,
-        chipsTactic: null,
-        chipsReflect: null,
-        chipsPoison: null,
-        chipsPuny: null,
-        chipsDebuf: null,
-        typeDamage: null,
-        typeHeal: null,
-        typeBoost: null,
-        typeAbsolutShield: null,
-        typeRelativeShield: null,
-        typeTactic: null,
-        typeReflect: null,
-        typePoison: null,
-        typePuny: null,
-        typeDebuf: null
-
-      }
+      return {}
     },
     methods: {
+      /*
       getAllChips () {
         fetch('https://leekwars.com/api/chip/get-all')
           .then(function (response) {
@@ -110,7 +91,7 @@
                 this.getAllChips()
               }.bind(this))
           }.bind(this))
-      }
+       */
     }
   }
 </script>
