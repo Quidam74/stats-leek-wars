@@ -29,7 +29,7 @@ export default class Fetch {
   }
 
   getAllWeapon () {
-    this.fetch(endpoint.weapons.get).then((value) => {
+    return this.fetch(endpoint.weapons.get).then((value) => {
       this.weapons = value.weapons
     })
   }
@@ -49,7 +49,7 @@ export default class Fetch {
   }
 
   sortChips () {
-    console.log(this.chips)
+    // console.log(this.chips)
     // this.chips.forEach((elem, index) => {
     // console.log(elem)
     // })
