@@ -12,13 +12,11 @@ export default class Fetch {
   }
 
   getAllEffect () {
-    this.constants.forEach((elem, index) => {
+    this.constants.forEach(function (elem, index) {
       if (elem.name.indexOf('EFFECT_') === 0) {
-        let effect = elem.name
-        delete elem['name']
-        this.effect[effect] = elem
+        this.effect.push(elem)
       }
-    })
+    }.bind(this))
   }
 
   getAll () {

@@ -2,10 +2,12 @@
     <div class="calc">
         <div class="calc-weapon">
             <render-one class="weaponChild" v-for="id in listWeapon" :itemCarac="listStuff.weapons[id]"
+                        :listEffect="allstuff.effect"
                         typeItem="weapon"></render-one>
         </div>
         <div class="calc-chip">
             <render-one class="chipChild" v-for="id in listChip" :itemCarac="listStuff.chips[id]"
+                        :listEffect="allstuff.effect"
                         typeItem="chip"></render-one>
         </div>
     </div>
@@ -49,6 +51,7 @@
         &-chip {
             margin: 20px;
             display: flex;
+            flex-wrap: wrap;
 
             .chipChild {
                 width: 10%;

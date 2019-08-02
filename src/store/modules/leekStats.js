@@ -91,7 +91,6 @@ const actions = {
 }
 
 const getters = {
-
   getFrequency: state => state.frequency,
   getLife: state => state.life,
   getMagic: state => state.magic,
