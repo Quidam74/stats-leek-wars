@@ -13,6 +13,7 @@
             </div>
         </div>
         <render-calc :listStuff="fetch"></render-calc>
+
     </main>
 </template>
 
@@ -29,7 +30,6 @@
     props: {},
     mounted () {
       this.fetch = new Fetch()
-      this.currentLeek = {}
       this.$store.dispatch('addLeekWeapon', 37)
       this.$store.dispatch('addLeekWeapon', 38)
       this.$store.dispatch('addLeekWeapon', 39)
@@ -44,12 +44,19 @@
       this.$store.dispatch('addLeekChip', 8)
       this.$store.dispatch('addLeekChip', 9)
       this.$store.dispatch('addLeekChip', 10)
-      this.currentLeek.equipedWeapon = {1: 37, 2: 38}
-      this.currentLeek.equipedChips = {1: 1, 2: 2, 3: 3, 4: 4}
+
+      this.$store.dispatch('setFrequency', 10)
+      this.$store.dispatch('setLife', 10)
+      this.$store.dispatch('setMagic', 10)
+      this.$store.dispatch('setMp', 10)
+      this.$store.dispatch('setResistance', 10)
+      this.$store.dispatch('setScience', 10)
+      this.$store.dispatch('setStrength', 10)
+      this.$store.dispatch('setTp', 10)
+      this.$store.dispatch('setwisdom', 10)
     },
     data () {
       return {
-        currentLeek: null,
         fetch: null
       }
     },

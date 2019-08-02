@@ -1,7 +1,6 @@
 <template>
     <div class="overview-stats">
         <stats-line v-for="item in stats" :typeStats="item"></stats-line>
-        <div>use Le storage pour faire remonter des info</div>
     </div>
 </template>
 
