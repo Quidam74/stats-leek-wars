@@ -3,9 +3,10 @@
         <div class="overview-stats"><h1>stats</h1></div>
         <div class="overview-leek">leek</div>
         <div class="overview-stats">
-            <stuff-overview></stuff-overview>
-            <stuff-overview></stuff-overview>
-            <h1 v-if="staticData">{{staticData[1].name}}</h1>
+            <stuff-overview typeStuff="weapons"></stuff-overview>
+            <stuff-overview typeStuff="chips"></stuff-overview>
+            <stuff-change v-if="fetch!==null && fetch.weapons !==''" typeStuff="weapon" :data="fetch.weapons"></stuff-change>
+            <stuff-change v-if="fetch!==null && fetch.chips !==''" typeStuff="chip" :data="fetch.chips"></stuff-change>
         </div>
 
     </main>
@@ -15,22 +16,19 @@
   import Fetch from '../services/Fetch'
   import StuffOverview from './StuffOverview'
   import WorkingLeek from './WorkingLeek'
+  import StuffChange from './StuffChange'
 
   export default {
     name: 'Main',
-    components: {StuffOverview},
+    components: {StuffChange, StuffOverview},
     props: {},
     mounted () {
       this.fetch = new Fetch()
       this.currentLeek = WorkingLeek
-      setTimeout(() => {
-        this.staticData = this.fetch.chips
-      }, 500)
     },
     data () {
       return {
         currentLeek: null,
-        staticData: null,
         fetch: null
       }
     },

@@ -1,12 +1,23 @@
 <template>
-    <div>Weapon
-        <div>editWeapon</div>
+    <div>{{type}} equiped
     </div>
 </template>
 
 <script>
   export default {
-    name: 'StuffOverview'
+    name: 'StuffOverview',
+    props: {
+      typeStuff: {
+        type: [String],
+        default: 'default'
+      }
+    },
+    data () {
+      return {
+        id: '',
+        type: this.typeStuff
+      }
+    }
   }
 </script>
 
