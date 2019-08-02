@@ -1,11 +1,9 @@
 <template>
-    <div>
-        <div>{{type}} Change</div>
-        <ul>
+    <div class="stuff" :data-type="type">
+        <h3 class="stuff-title">{{type}} Change</h3>
+        <ul class="stuff-list">
             <li v-for="item in dataList">
-                {{ item.name}}
-                <img :src="
-                require(`@/assets/img/${type}/${item.name}.png`)">
+                <img :src="require(`@/assets/img/${type}/${item.name}.png`)" :data-id="item.id">
             </li>
         </ul>
     </div>
@@ -39,6 +37,27 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    .stuff {
+        display: none;
+        &-title {
+        }
 
+        &-list {
+            padding: 0px;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+
+            li {
+                padding: 10px;
+
+                img {
+                    width: 60px;
+                    height: auto;
+                }
+            }
+        }
+
+    }
 </style>

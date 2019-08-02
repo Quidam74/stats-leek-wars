@@ -6,3 +6,9 @@ export const DELETE_NOTE_IN_LIST = 'notes/DELETE_NOTE_IN_LIST'
 
 export const SET_NOTE_ID_EDIT = 'notes/SET_NOTE_EDIT'
 export const SET_DISPLAY_EDIT = 'notes/SET_DISPLAY_EDIT'
+
+// leekWeapon.js
+export const ADD_LEEKWEAPON_TO_LIST = 'leekWeapon/ADD_LEEKWEAPON_TO_LIST'
+
+// leekChip.js
+export const ADD_LEEKCHIP_TO_LIST = 'leekChip/ADD_LEEKWEAPON_TO_LIST'
