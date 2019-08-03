@@ -83,7 +83,7 @@ const actions = {
       commit(types.SET_TP, tp)
     }
   },
-  setwisdom ({commit}, wisdom) {
+  setWisdom ({commit}, wisdom) {
     if (wisdom) {
       commit(types.SET_WISDOM, wisdom)
     }

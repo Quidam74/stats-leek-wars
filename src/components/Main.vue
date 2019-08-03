@@ -51,7 +51,7 @@
       this.$store.dispatch('setScience', 500)
       this.$store.dispatch('setStrength', 500)
       this.$store.dispatch('setTp', 500)
-      this.$store.dispatch('setwisdom', 500)
+      this.$store.dispatch('setWisdom', 500)
     },
     data () {
       return {

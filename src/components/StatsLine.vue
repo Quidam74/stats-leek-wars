@@ -22,7 +22,6 @@
       }
     },
     mounted () {
-      console.log(this.stat)
       this.getValue()
     },
     methods: {
@@ -75,7 +74,7 @@
             this.$store.dispatch('setResistance', this.value)
             break
           case 'science':
-            this.$store.dispatch('seScience', this.value)
+            this.$store.dispatch('setScience', this.value)
             break
           case 'strength':
             this.$store.dispatch('setStrength', this.value)
@@ -87,7 +86,6 @@
             this.$store.dispatch('setWisdom', this.value)
             break
         }
-        console.log(this.value)
       }
     }
   }
