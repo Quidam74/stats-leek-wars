@@ -6,7 +6,8 @@
                   :data-idtype="JSON.stringify(typePuce.id)" v-on:click="changeFilter($event)">{{typePuce.name}}</span>
         </div>
         <ul class="stuff-list">
-            <li v-for="item in dataList" v-if="type==='weapon' || selectedType.includes(item.effects[0].id)">
+            <li v-for="item in dataList" v-on:click="addItem(item.id)"
+                v-if="type==='weapon' || selectedType.includes(item.effects[0].id)">
                 <img :src="require(`@/assets/img/${type}/${item.name}.png`)" :data-id="item.id">
             </li>
         </ul>
@@ -79,6 +80,13 @@
         this.selectedType = JSON.parse(event.currentTarget.dataset.idtype)
         document.querySelector('.selected').classList.remove('selected')
         event.currentTarget.classList.add('selected')
+      },
+      addItem (id) {
+        if (this.type === 'weapon') {
+          this.$store.dispatch('addLeekWeapon', id)
+        } else if (this.type === 'chip') {
+          this.$store.dispatch('addLeekChip', id)
+        }
       }
     }
   }
