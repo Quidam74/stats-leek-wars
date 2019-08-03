@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="stuff">
         <stuff-overview v-on:displayChangePannel="displayChangePannel" :listStuff="data"
                         :typeStuff="type"></stuff-overview>
         <stuff-change v-bind:isVisible="showChange" :typeStuff="type" :data="data"></stuff-change>
@@ -27,17 +27,32 @@
       return {
         type: this.typeData,
         data: this.listData,
-        showChange: false
+        showChange: false,
+        stayLeft: true
       }
     },
     methods: {
       displayChangePannel () {
         this.showChange = !this.showChange
+        if (this.showChange) {
+          this.$el.classList.add('displayLeft')
+        } else {
+          this.$el.classList.remove('displayLeft')
+        }
       }
     }
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    .stuff {
+        display: -webkit-inline-box;
+        width: 100%;
+        transition: transform .5s;
+    }
+
+    .displayLeft {
+        transform: translateX(-100%);
+    }
 
 </style>

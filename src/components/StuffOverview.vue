@@ -58,6 +58,8 @@
 
 <style scoped lang="scss">
     .currentStuff {
+
+        width: 100%;
         &-title {
         }
 
@@ -84,7 +86,7 @@
                 padding: 10px;
 
                 img {
-                    width: 60px;
+                    width: 50px;
                     height: auto;
                 }
             }

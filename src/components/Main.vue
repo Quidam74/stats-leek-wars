@@ -3,7 +3,7 @@
         <div class="overview">
             <stats></stats>
             <div class="overview-leek"><img src="@/assets/img/big_leek_2_white.png"></div>
-            <div class="overview-stats">
+            <div class="overview-stuff">
                 <stuff :listData="fetch.weapons"
                        typeData="weapon">>
                 </stuff>
@@ -62,16 +62,20 @@
 </script>
 
 <style lang="scss">
+    main {
+        padding: 30px;
+    }
+
     .overview {
         display: flex;
         width: 100%;
 
         &-stats {
-            width: 20%;
+            width: 30%;
         }
 
         &-leek {
-            width: 50%;
+            width: 45%;
             display: flex;
             height: 400px;
 
@@ -81,8 +85,11 @@
             }
         }
 
-        &-stats {
-            width: 30%;
+        &-stuff {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
     }
 

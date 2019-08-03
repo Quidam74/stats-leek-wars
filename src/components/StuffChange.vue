@@ -1,11 +1,11 @@
 <template>
-    <div v-show="visible" class="stuff" :data-type="type">
+    <div v-show="visible" class="stufff" :data-type="type">
         <h3 class="stuff-title">{{type}} Change</h3>
         <div class="filter" v-if="type==='chip'">
             <span class="filter-item" v-for="typePuce in listTypePuce"
                   :data-idtype="JSON.stringify(typePuce.id)" v-on:click="changeFilter($event)">{{typePuce.name}}</span>
         </div>
-        <ul class="stuff-list">
+        <ul class="stufff-list">
             <li v-for="item in dataList" v-on:click="addItem(item.id)"
                 v-if="type==='weapon' || selectedType.includes(item.effects[0].id)">
                 <img :src="require(`@/assets/img/${type}/${item.name}.png`)" :data-id="item.id">
@@ -93,7 +93,7 @@
 </script>
 
 <style scoped lang="scss">
-    .stuff {
+    .stufff {
         &-title {
         }
 
@@ -107,7 +107,7 @@
                 padding: 10px;
 
                 img {
-                    width: 60px;
+                    width: 50px;
                     height: auto;
                 }
             }
