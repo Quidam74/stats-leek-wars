@@ -32,6 +32,7 @@
       this.fetch = new Fetch()
       this.$store.dispatch('addLeekWeapon', 37)
       this.$store.dispatch('addLeekWeapon', 38)
+      this.$store.dispatch('addLeekWeapon', 38)
       this.$store.dispatch('addLeekWeapon', 39)
       this.$store.dispatch('addLeekChip', 8)
       this.$store.dispatch('addLeekChip', 10)
