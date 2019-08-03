@@ -59,6 +59,7 @@
 <style scoped lang="scss">
     .currentStuff {
 
+        background-color: white;
         width: 100%;
         &-title {
         }

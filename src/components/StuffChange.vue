@@ -94,6 +94,8 @@
 
 <style scoped lang="scss">
     .stufff {
+
+        background-color: white;
         &-title {
         }
 
