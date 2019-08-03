@@ -11,8 +11,8 @@
             <span v-if="item.cooldown">cooldown : {{item.cooldown }} Turn</span>
             <span>range : {{item.min_range}} - {{item.max_range}}</span>
             <span v-if="item.effects[0].turns !== 0">duration :  {{item.effects[0].turns}}</span>
-            <span>min {{effectName}} : {{item.effects[0].value2+item.effects[0].value2*stats | round}}</span>
-            <span>max {{effectName}} : {{item.effects[0].value1+item.effects[0].value1*stats | round}}</span>
+            <span>min {{effectName}} : {{item.effects[0].value1+item.effects[0].value1*stats | round}}</span>
+            <span>max {{effectName}} : {{item.effects[0].value1+item.effects[0].value2+(item.effects[0].value1+item.effects[0].value2)*stats | round}}</span>
         </div>
     </div>
 </template>
