@@ -50,7 +50,6 @@
       } else if (appliedEffect.indexOf('_BUFF') !== -1) {
         this.stats = this.$store.getters.getScience / 100
       } else if (appliedEffect.indexOf('_SHIELD') !== -1) {
-        console.log(this.item)
         this.stats = this.$store.getters.getResistance / 100
       } else if (appliedEffect.indexOf('_DEBUFF') !== -1) {
         this.stats = 1
