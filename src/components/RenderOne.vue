@@ -56,7 +56,6 @@
         this.appliedEffect = this.effects.find(function (elem) {
           return parseInt(elem.value) === this.item.effects[0].id
         }.bind(this)).name
-        console.log(this.appliedEffect)
         if (this.appliedEffect === 'EFFECT_DAMAGE') {
           return this.$store.getters.getStrength
         } else if (this.appliedEffect === 'EFFECT_HEAL') {

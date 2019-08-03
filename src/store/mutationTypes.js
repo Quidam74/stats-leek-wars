@@ -9,9 +9,10 @@ export const SET_DISPLAY_EDIT = 'notes/SET_DISPLAY_EDIT'
 
 // leekWeapon.js
 export const ADD_LEEKWEAPON_TO_LIST = 'leekWeapon/ADD_LEEKWEAPON_TO_LIST'
-
+export const REMOVE_LEEKWEAPON_TO_LIST = 'leekWeapon/REMOVE_LEEKWEAPON_TO_LIST'
 // leekChip.js
 export const ADD_LEEKCHIP_TO_LIST = 'leekChip/ADD_LEEKWEAPON_TO_LIST'
+export const REMOVE_LEEKCHIP_TO_LIST = 'leekChip/REMOVE_LEEKCHIP_TO_LIST'
 
 // leekStats.js
 export const SET_FREQUENCY = 'leekStats/SET_FREQUENCY'

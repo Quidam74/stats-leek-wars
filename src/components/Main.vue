@@ -2,14 +2,13 @@
     <main v-if="fetch!==null && fetch.weapons !=='' && fetch.chips !==''&& fetch.effect !== Array()">
         <div class="overview">
             <stats></stats>
-            <div class="overview-leek">leek</div>
+            <div class="overview-leek"><img src="@/assets/img/big_leek_2_white.png"></div>
             <div class="overview-stats">
-                <stuff-overview :listStuff="fetch.weapons"
-                                typeStuff="weapon"></stuff-overview>
-                <stuff-change typeStuff="weapon" :data="fetch.weapons"></stuff-change>
-                <stuff-overview :listStuff="fetch.chips"
-                                typeStuff="chip"></stuff-overview>
-                <stuff-change typeStuff="chip" :data="fetch.chips"></stuff-change>
+                <stuff :listData="fetch.weapons"
+                       typeData="weapon">>
+                </stuff>
+                <stuff :listData="fetch.chips"
+                       typeData="chip"></stuff>
             </div>
         </div>
         <render-calc :listStuff="fetch"></render-calc>
@@ -19,14 +18,13 @@
 
 <script>
   import Fetch from '../services/Fetch'
-  import StuffOverview from './StuffOverview'
-  import StuffChange from './StuffChange'
+  import Stuff from './Stuff'
   import Stats from './Stats'
   import RenderCalc from './RenderCalc'
 
   export default {
     name: 'Main',
-    components: {RenderCalc, Stats, StuffChange, StuffOverview},
+    components: {RenderCalc, Stats, Stuff},
     props: {},
     mounted () {
       this.fetch = new Fetch()
@@ -74,6 +72,13 @@
 
         &-leek {
             width: 50%;
+            display: flex;
+            height: 400px;
+
+            img {
+                height: 400px;
+                margin: auto;
+            }
         }
 
         &-stats {

@@ -7,6 +7,10 @@ const state = {
 const mutations = {
   [types.ADD_LEEKCHIP_TO_LIST] (state, leekChip) {
     state.leekChip.push(leekChip)
+  },
+  [types.REMOVE_LEEKCHIP_TO_LIST] (state, leekChip) {
+    let index = state.leekChip.indexOf(leekChip)
+    state.leekChip.splice(index, 1)
   }
 }
 
@@ -15,6 +19,11 @@ const actions = {
     if (leekChip) {
       // note._id = note.id
       commit(types.ADD_LEEKCHIP_TO_LIST, leekChip)
+    }
+  },
+  removeLeekChip ({commit}, leekChip) {
+    if (leekChip) {
+      commit(types.REMOVE_LEEKCHIP_TO_LIST, leekChip)
     }
   }
 }

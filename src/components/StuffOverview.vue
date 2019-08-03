@@ -1,8 +1,11 @@
 <template>
     <div class="currentStuff">
-        <h3 class="currentStuff-title">{{type}} Equiped</h3>
+        <div class="currentStuff-header">
+            <h3 class="currentStuff-title">{{type}} Equiped</h3>
+            <span class="currentStuff-changeButton" v-on:click="displayChangePannel">Change</span>
+        </div>
         <ul class="currentStuff-list">
-            <li v-for="item in stuff">
+            <li v-for="item in stuff" v-on:click="deleteItem(item)">
                 <img :src="require(`@/assets/img/${type}/${listStuff[item].name}.png`)">
             </li>
         </ul>
@@ -23,6 +26,7 @@
       }
     },
     mounted () {
+      console.log(this.allStuff)
       if (this.type === 'weapon') {
         this.stuff = this.$store.getters.getLeekWeapon
       } else {
@@ -38,8 +42,15 @@
       }
     },
     methods: {
-      findStuff (id) {
-        return 'require(`@/assets/img/' + this.type + '/' + this.listStuff[id].name + '.png`)'
+      displayChangePannel () {
+        this.$emit('displayChangePannel')
+      },
+      deleteItem (id) {
+        if (this.type === 'chip') {
+          this.$store.dispatch('removeLeekChip', id)
+        } else if (this.type === 'weapon') {
+          this.$store.dispatch('removeLeekWeapon', id)
+        }
       }
     }
   }
@@ -48,6 +59,19 @@
 <style scoped lang="scss">
     .currentStuff {
         &-title {
+        }
+
+        &-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &-changeButton {
+            background-color: #5fad1b;
+            color: white;
+            padding: 2px 5px;
+            margin: 3px 5px;
+            cursor: pointer;
         }
 
         &-list {

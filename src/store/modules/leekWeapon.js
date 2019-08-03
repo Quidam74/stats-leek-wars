@@ -7,6 +7,10 @@ const state = {
 const mutations = {
   [types.ADD_LEEKWEAPON_TO_LIST] (state, leekWeapon) {
     state.leekWeapon.push(leekWeapon)
+  },
+  [types.REMOVE_LEEKWEAPON_TO_LIST] (state, leekWeapon) {
+    let index = state.leekWeapon.indexOf(leekWeapon)
+    state.leekWeapon.splice(index, 1)
   }
 }
 
@@ -15,6 +19,11 @@ const actions = {
     if (leekWeapon) {
       // note._id = note.id
       commit(types.ADD_LEEKWEAPON_TO_LIST, leekWeapon)
+    }
+  },
+  removeLeekWeapon ({commit}, leekWeapon) {
+    if (leekWeapon) {
+      commit(types.REMOVE_LEEKWEAPON_TO_LIST, leekWeapon)
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="stuff" :data-type="type">
+    <div v-show="visible" class="stuff" :data-type="type">
         <h3 class="stuff-title">{{type}} Change</h3>
         <div class="filter" v-if="type==='chip'">
             <span class="filter-item" v-for="typePuce in listTypePuce"
@@ -24,12 +24,17 @@
       data: {
         type: [Object],
         default: [{error: 'error'}]
+      },
+      isVisible: {
+        type: [Boolean],
+        default: false
       }
     },
     data () {
       return {
         type: this.typeStuff,
         dataList: this.data,
+        visible: this.isVisible,
         listTypePuce: [{
           name: 'Attacks',
           id: [1]
@@ -61,6 +66,11 @@
         selectedType: [1]
       }
     },
+    watch: {
+      isVisible: function (newVal, oldVal) { // watch it
+        this.visible = newVal
+      }
+    },
     mounted () {
       document.querySelector('.filter-item:first-of-type').classList.add('selected')
     },
@@ -76,7 +86,6 @@
 
 <style scoped lang="scss">
     .stuff {
-        /*display: none;*/
         &-title {
         }
 
