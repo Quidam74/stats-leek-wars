@@ -1,6 +1,7 @@
 import * as types from '@/store/mutationTypes'
 
 const state = {
+  level: null,
   frequency: null,
   life: null,
   magic: null,
@@ -14,6 +15,9 @@ const state = {
 }
 
 const mutations = {
+  [types.SET_LEVEL] (state, level) {
+    state.level = level
+  },
   [types.SET_FREQUENCY] (state, frequency) {
     state.frequency = frequency
   },
@@ -47,6 +51,11 @@ const mutations = {
 
 }
 const actions = {
+  setLevel ({commit}, level) {
+    if (level) {
+      commit(types.SET_LEVEL, level)
+    }
+  },
   setFrequency ({commit}, frequency) {
     if (frequency) {
       commit(types.SET_FREQUENCY, frequency)
@@ -100,6 +109,7 @@ const actions = {
 }
 
 const getters = {
+  getLevel: state => state.level,
   getFrequency: state => state.frequency,
   getLife: state => state.life,
   getMagic: state => state.magic,

@@ -14,8 +14,8 @@
                 <span v-if="effect.turns">duration : {{effect.turns}}</span>
                 <span>{{getStatName(effect.id)}} min : {{calcMin(effect) | round}}</span>
                 <span>{{getStatName(effect.id)}} max : {{calcMax(effect) | round}}</span>
-                <span>effect min per TP {{calcPaRatioMin(effect) | round2}}</span>
-                <span>effect max per TP {{calcPaRatioMax(effect) | round2}}</span>
+                <span>effect min per TP : {{calcPaRatioMin(effect) | round2}}</span>
+                <span>effect max per TP : {{calcPaRatioMax(effect) | round2}}</span>
             </div>
         </div>
     </div>

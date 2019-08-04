@@ -1,8 +1,11 @@
 <template>
-    <div class="stat">
+    <div v-if="stat !=='level'" class="stat">
         <img class="stat-img" :src="require(`@/assets/img/stats/${stat}.png`)">
         <h3 class="stat-name">{{stat}}</h3>
         <input v-on:change="setStoreValue" class="stat-input" type="number" v-model="value">
+    </div>
+    <div v-else="stat !=='level'">
+        <h3 class="stat-name">{{stat}}</h3>
     </div>
 </template>
 
