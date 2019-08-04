@@ -10,10 +10,14 @@
         <div class="item-secondaryData">
             <span v-if="item.cooldown">cooldown : {{item.cooldown }} Turn</span>
             <span>range : {{item.min_range}} - {{item.max_range}}</span>
-            <span v-if="item.effects[0].turns !== 0">duration :  {{item.effects[0].turns}}</span>
-            <span>min {{effectName}} : {{item.effects[0].value1+item.effects[0].value1*stats | round}}</span>
-            <span>max {{effectName}} : {{item.effects[0].value1+item.effects[0].value2+(item.effects[0].value1+item.effects[0].value2)*stats | round}}</span>
+            <div class="damageData" v-for="effect in item.effects">
+                <span v-if="effect.turns">duration : {{effect.turns}}</span>
+                <span>{{getStatName(effect.id)}} min : {{calcMin(effect) | round}}</span>
+                <span>{{getStatName(effect.id)}} max : {{calcMax(effect) | round}}</span>
+            </div>
+
         </div>
+
     </div>
 </template>
 
@@ -45,71 +49,61 @@
       return {
         item: this.itemCarac,
         type: this.typeItem,
-        effects: this.listEffect,
-        appliedEffect: null,
-        stats: null,
-        effectName: null
+        effects: this.listEffect
       }
-    },
-    computed: {
-      getStoreValue () {
-        this.appliedEffect = this.effects.find(function (elem) {
-          return parseInt(elem.value) === this.item.effects[0].id
-        }.bind(this)).name
-        if (this.appliedEffect === 'EFFECT_DAMAGE') {
-          return this.$store.getters.getStrength
-        } else if (this.appliedEffect === 'EFFECT_HEAL') {
-          return this.$store.getters.getwisdom
-        } else if (this.appliedEffect.indexOf('_BUFF') !== -1) {
-          return this.$store.getters.getScience
-        } else if (this.appliedEffect.indexOf('_SHIELD') !== -1) {
-          return this.$store.getters.getResistance
-        } else if (this.appliedEffect.indexOf('_DEBUFF') !== -1) {
-          return this.$store.getters.getMagic
-        } else if (this.appliedEffect === 'EFFECT_POISON') {
-          return this.$store.getters.getMagic
-        } else if (this.appliedEffect === 'EFFECT_DAMAGE_RETURN') {
-          return this.$store.getters.getAgility
-        } else if (this.appliedEffect.indexOf('_SHACKLE') !== -1) {
-          return this.$store.getters.getMagic
-        }
-      }
-    },
-    watch: {
-      getStoreValue () {
-        this.getStat()
-      }
-    },
-    mounted () {
-      this.getStat()
     },
     methods: {
-      getStat () {
-        if (this.appliedEffect === 'EFFECT_DAMAGE') {
-          this.stats = this.$store.getters.getStrength / 100
-          this.effectName = 'damage'
-        } else if (this.appliedEffect === 'EFFECT_HEAL') {
-          this.stats = this.$store.getters.getwisdom / 100
-          this.effectName = 'heal'
-        } else if (this.appliedEffect.indexOf('_BUFF') !== -1) {
-          this.stats = this.$store.getters.getScience / 100
-          this.effectName = 'buff ' + this.appliedEffect.substr(this.appliedEffect.lastIndexOf('_') + 1).toLowerCase()
-        } else if (this.appliedEffect.indexOf('_SHIELD') !== -1) {
-          this.stats = this.$store.getters.getResistance / 100
-          this.effectName = 'buff ' + this.appliedEffect.substr(this.appliedEffect.indexOf('_') + 1).toLowerCase().replace('_', ' ')
-        } else if (this.appliedEffect.indexOf('_DEBUFF') !== -1) {
-          this.stats = 1
-        } else if (this.appliedEffect === 'EFFECT_POISON') {
-          this.stats = this.$store.getters.getMagic / 100
-          this.effectName = 'poison'
-        } else if (this.appliedEffect === 'EFFECT_SUMMON') {
-          this.stats = ''
-          this.effectName = 'I\'m a puny !!!'
-        } else if (this.appliedEffect === 'EFFECT_DAMAGE_RETURN') {
-          this.stats = this.$store.getters.getAgility / 100
-        } else if (this.appliedEffect.indexOf('_SHACKLE') !== -1) {
-          this.stats = this.$store.getters.getMagic / 100
-          this.effectName = 'debuff ' + this.appliedEffect.substr(this.appliedEffect.lastIndexOf('_') + 1).toLowerCase()
+      calcMin (effect) {
+        return effect.value1 + (effect.value1) * this.getStatValue(effect.id)
+      },
+      calcMax (effect) {
+        return effect.value1 + effect.value2 + (effect.value1 + effect.value2) * this.getStatValue(effect.id)
+      },
+      findEffect (id) {
+        return this.effects.find((elem) => {
+          return parseInt(elem.value) === id
+        })
+      },
+      getStatValue (id) {
+        let effect = this.findEffect(id)
+        if (effect.name === 'EFFECT_DAMAGE') {
+          return this.$store.getters.getStrength / 100
+        } else if (effect.name === 'EFFECT_HEAL') {
+          return this.$store.getters.getwisdom / 100
+        } else if (effect.name.indexOf('_BUFF') !== -1) {
+          return this.$store.getters.getScience / 100
+        } else if (effect.name.indexOf('_SHIELD') !== -1) {
+          return this.$store.getters.getResistance / 100
+        } else if (effect.name.indexOf('_DEBUFF') !== -1) {
+          return this.$store.getters.getMagic / 100
+        } else if (effect.name === 'EFFECT_POISON') {
+          return this.$store.getters.getMagic / 100
+        } else if (effect.name === 'EFFECT_DAMAGE_RETURN') {
+          return this.$store.getters.getAgility / 100
+        } else if (effect.name.indexOf('_SHACKLE') !== -1) {
+          return this.$store.getters.getMagic / 100
+        }
+      },
+      getStatName (id) {
+        let effect = this.findEffect(id).name
+        if (effect === 'EFFECT_DAMAGE') {
+          return 'damage'
+        } else if (effect === 'EFFECT_HEAL') {
+          return 'heal'
+        } else if (effect.indexOf('_BUFF') !== -1) {
+          return 'buff ' + effect.substr(effect.lastIndexOf('_') + 1).toLowerCase()
+        } else if (effect.indexOf('_SHIELD') !== -1) {
+          return 'buff ' + effect.substr(effect.indexOf('_') + 1).toLowerCase().replace('_', ' ')
+        } else if (effect.indexOf('_DEBUFF') !== -1) {
+          return 1
+        } else if (effect === 'EFFECT_POISON') {
+          return 'poison'
+        } else if (effect === 'EFFECT_SUMMON') {
+          return 'I\'m a puny !!!'
+        } else if (effect === 'EFFECT_DAMAGE_RETURN') {
+
+        } else if (effect.indexOf('_SHACKLE') !== -1) {
+          return 'debuff ' + effect.substr(effect.lastIndexOf('_') + 1).toLowerCase()
         }
       }
     }
@@ -138,9 +132,15 @@
             }
         }
 
-        &-secondaryData {margin-top: 10px;
+        &-secondaryData {
+            margin-top: 10px;
             display: flex;
             flex-direction: column;
+
+            .damageData {
+                display: flex;
+                flex-direction: column;
+            }
         }
     }
 </style>
