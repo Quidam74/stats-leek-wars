@@ -44,6 +44,7 @@
         &-weapon {
             margin: 20px 0;
             display: flex;
+            flex-wrap: wrap;
 
             .weaponChild {
                 min-width: 23%;

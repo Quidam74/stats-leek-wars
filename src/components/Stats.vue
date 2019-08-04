@@ -13,16 +13,16 @@
     data () {
       return {
         stats: {
-          1: 'frequency',
-          2: 'life',
-          3: 'magic',
-          4: 'mp',
+          1: 'life',
+          2: 'strength',
+          3: 'wisdom',
+          4: 'agility',
           5: 'resistance',
           6: 'science',
-          7: 'strength',
-          8: 'tp',
-          9: 'wisdom',
-          10: 'agility'
+          7: 'magic',
+          8: 'frequency',
+          9: 'mp',
+          10: 'tp'
         }
       }
     }
