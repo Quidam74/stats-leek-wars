@@ -21,7 +21,8 @@
           6: 'science',
           7: 'strength',
           8: 'tp',
-          9: 'wisdom'
+          9: 'wisdom',
+          10: 'agility'
         }
       }
     }

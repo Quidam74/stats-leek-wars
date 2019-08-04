@@ -54,6 +54,9 @@
           case 'wisdom':
             this.value = this.$store.getters.getwisdom
             break
+          case 'agility':
+            this.value = this.$store.getters.getAgility
+            break
         }
       },
       setStoreValue () {
@@ -84,6 +87,9 @@
             break
           case 'wisdom':
             this.$store.dispatch('setWisdom', this.value)
+            break
+          case 'agility':
+            this.$store.dispatch('setAgility', this.value)
             break
         }
       }

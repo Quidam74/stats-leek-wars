@@ -9,7 +9,8 @@ const state = {
   science: null,
   strength: null,
   tp: null,
-  wisdom: null
+  wisdom: null,
+  agility: null
 }
 
 const mutations = {
@@ -39,6 +40,9 @@ const mutations = {
   },
   [types.SET_WISDOM] (state, wisdom) {
     state.wisdom = wisdom
+  },
+  [types.SET_AGILITY] (state, agility) {
+    state.agility = agility
   }
 
 }
@@ -87,6 +91,11 @@ const actions = {
     if (wisdom) {
       commit(types.SET_WISDOM, wisdom)
     }
+  },
+  setAgility ({commit}, agility) {
+    if (agility) {
+      commit(types.SET_AGILITY, agility)
+    }
   }
 }
 
@@ -99,7 +108,8 @@ const getters = {
   getScience: state => state.science,
   getStrength: state => state.strength,
   getTp: state => state.tp,
-  getwisdom: state => state.wisdom
+  getwisdom: state => state.wisdom,
+  getAgility: state => state.agility
 }
 
 export default {

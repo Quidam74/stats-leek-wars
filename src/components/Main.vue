@@ -51,6 +51,7 @@
       this.$store.dispatch('setStrength', 500)
       this.$store.dispatch('setTp', 500)
       this.$store.dispatch('setWisdom', 500)
+      this.$store.dispatch('setAgility', 500)
     },
     data () {
       return {

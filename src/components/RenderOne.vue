@@ -69,7 +69,7 @@
         } else if (this.appliedEffect === 'EFFECT_POISON') {
           return this.$store.getters.getMagic
         } else if (this.appliedEffect === 'EFFECT_DAMAGE_RETURN') {
-          return 'a faire'
+          return this.$store.getters.getAgility
         } else if (this.appliedEffect.indexOf('_SHACKLE') !== -1) {
           return this.$store.getters.getMagic
         }
@@ -106,7 +106,7 @@
           this.stats = ''
           this.effectName = 'I\'m a puny !!!'
         } else if (this.appliedEffect === 'EFFECT_DAMAGE_RETURN') {
-          this.stats = 'a faire'
+          this.stats = this.$store.getters.getAgility / 100
         } else if (this.appliedEffect.indexOf('_SHACKLE') !== -1) {
           this.stats = this.$store.getters.getMagic / 100
           this.effectName = 'debuff ' + this.appliedEffect.substr(this.appliedEffect.lastIndexOf('_') + 1).toLowerCase()
