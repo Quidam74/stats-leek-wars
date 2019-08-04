@@ -8,16 +8,16 @@
             </div>
         </div>
         <div class="item-secondaryData">
-            <span v-if="item.cooldown">cooldown : {{item.cooldown }} Turn</span>
             <span>range : {{item.min_range}} - {{item.max_range}}</span>
+            <span v-if="item.cooldown">cooldown : {{item.cooldown }} Turn</span>
             <div class="damageData" v-for="effect in item.effects">
                 <span v-if="effect.turns">duration : {{effect.turns}}</span>
                 <span>{{getStatName(effect.id)}} min : {{calcMin(effect) | round}}</span>
                 <span>{{getStatName(effect.id)}} max : {{calcMax(effect) | round}}</span>
+                <span>effect min per TP {{calcPaRatioMin(effect)}}</span>
+                <span>effect max per TP {{calcPaRatioMax(effect)}}</span>
             </div>
-
         </div>
-
     </div>
 </template>
 
@@ -105,6 +105,12 @@
         } else if (effect.indexOf('_SHACKLE') !== -1) {
           return 'debuff ' + effect.substr(effect.lastIndexOf('_') + 1).toLowerCase()
         }
+      },
+      calcPaRatioMin (effect) {
+        return this.calcMin(effect) / this.item.cost
+      },
+      calcPaRatioMax (effect) {
+        return this.calcMax(effect) / this.item.cost
       }
     }
   }
