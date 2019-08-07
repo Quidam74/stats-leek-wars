@@ -23,7 +23,8 @@
           8: 'magic',
           9: 'frequency',
           10: 'mp',
-          11: 'tp'
+          11: 'tp',
+          12: 'capital'
         }
       }
     }

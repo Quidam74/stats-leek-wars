@@ -41,17 +41,18 @@
       this.$store.dispatch('addLeekChip', 73)
       this.$store.dispatch('addLeekChip', 100)
       this.$store.dispatch('addLeekChip', 94)
-
-      this.$store.dispatch('setFrequency', 500)
-      this.$store.dispatch('setLife', 500)
-      this.$store.dispatch('setMagic', 500)
-      this.$store.dispatch('setMp', 500)
-      this.$store.dispatch('setResistance', 500)
-      this.$store.dispatch('setScience', 500)
-      this.$store.dispatch('setStrength', 500)
-      this.$store.dispatch('setTp', 500)
-      this.$store.dispatch('setWisdom', 500)
-      this.$store.dispatch('setAgility', 500)
+      // stats
+      this.$store.dispatch('setLevel', 159)
+      this.$store.dispatch('setFrequency', 105)
+      this.$store.dispatch('setLife', 800)
+      this.$store.dispatch('setMagic', 0)
+      this.$store.dispatch('setMp', 5)
+      this.$store.dispatch('setResistance', 230)
+      this.$store.dispatch('setScience', 300)
+      this.$store.dispatch('setStrength', 200)
+      this.$store.dispatch('setTp', 12)
+      this.$store.dispatch('setWisdom', 200)
+      this.$store.dispatch('setAgility', 0)
     },
     data () {
       return {
