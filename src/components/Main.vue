@@ -28,19 +28,23 @@
     props: {},
     mounted () {
       this.fetch = new Fetch()
+      // weapon
       this.$store.dispatch('addLeekWeapon', 37)
       this.$store.dispatch('addLeekWeapon', 38)
       this.$store.dispatch('addLeekWeapon', 38)
       this.$store.dispatch('addLeekWeapon', 39)
-      this.$store.dispatch('addLeekChip', 8)
-      this.$store.dispatch('addLeekChip', 10)
-      this.$store.dispatch('addLeekChip', 19)
-      this.$store.dispatch('addLeekChip', 20)
-      this.$store.dispatch('addLeekChip', 34)
-      this.$store.dispatch('addLeekChip', 97)
+      // chip 67 84 89 90 15 16 17 25 26 34 59 68 110 73 76 77 75 74 79 78
+      this.$store.dispatch('addLeekChip', 84)
+      this.$store.dispatch('addLeekChip', 59)
+      this.$store.dispatch('addLeekChip', 68)
+      this.$store.dispatch('addLeekChip', 110)
       this.$store.dispatch('addLeekChip', 73)
-      this.$store.dispatch('addLeekChip', 100)
-      this.$store.dispatch('addLeekChip', 94)
+      this.$store.dispatch('addLeekChip', 76)
+      this.$store.dispatch('addLeekChip', 77)
+      this.$store.dispatch('addLeekChip', 75)
+      this.$store.dispatch('addLeekChip', 74)
+      this.$store.dispatch('addLeekChip', 79)
+      this.$store.dispatch('addLeekChip', 78)
       // stats
       this.$store.dispatch('setLevel', 159)
       this.$store.dispatch('setFrequency', 105)

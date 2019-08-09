@@ -26,7 +26,6 @@
       }
     },
     mounted () {
-      console.log(this.allStuff)
       if (this.type === 'weapon') {
         this.stuff = this.$store.getters.getLeekWeapon
       } else {

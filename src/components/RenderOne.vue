@@ -71,22 +71,32 @@
       },
       getStatValue (id) {
         let effect = this.findEffect(id)
+        console.log(effect.name)
         if (effect.name === 'EFFECT_DAMAGE') {
           return this.$store.getters.getStrength / 100
-        } else if (effect.name === 'EFFECT_HEAL') {
+        } else if (effect.name === 'EFFECT_HEAL' || effect.name === 'EFFECT_BOOST_MAX_LIFE') {
           return this.$store.getters.getwisdom / 100
-        } else if (effect.name.indexOf('_BUFF') !== -1) {
+        } else if (effect.name.indexOf('_BUFF') !== -1 || effect.name === 'EFFECT_AFTEREFFECT') {
           return this.$store.getters.getScience / 100
         } else if (effect.name.indexOf('_SHIELD') !== -1) {
           return this.$store.getters.getResistance / 100
+        } else if (effect.name === ('EFFECT_DEBUFF') || effect.name === ('EFFECT_VULNERABILITY')) {
+          return 0
         } else if (effect.name.indexOf('_DEBUFF') !== -1) {
           return this.$store.getters.getMagic / 100
         } else if (effect.name === 'EFFECT_POISON') {
           return this.$store.getters.getMagic / 100
         } else if (effect.name === 'EFFECT_DAMAGE_RETURN') {
           return this.$store.getters.getAgility / 100
+        } else if (effect.name === 'EFFECT_RESURRECT') {
+          return '∞'
         } else if (effect.name.indexOf('_SHACKLE') !== -1) {
           return this.$store.getters.getMagic / 100
+        } else if (effect.name === ('EFFECT_VULNERABILITY')) {
+          return this.$store.getters.getMagic / 100
+        } else {
+          console.log(effect.name)
+          return 50
         }
       },
       getStatName (id) {
