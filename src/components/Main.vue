@@ -31,7 +31,6 @@
       // weapon
       this.$store.dispatch('addLeekWeapon', 37)
       this.$store.dispatch('addLeekWeapon', 38)
-      this.$store.dispatch('addLeekWeapon', 38)
       this.$store.dispatch('addLeekWeapon', 39)
       // chip 67 84 89 90 15 16 17 25 26 34 59 68 110 73 76 77 75 74 79 78
       this.$store.dispatch('addLeekChip', 84)

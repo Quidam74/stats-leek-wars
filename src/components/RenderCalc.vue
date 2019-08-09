@@ -4,6 +4,7 @@
         <div class="calc-weapon">
             <render-one class="weaponChild" v-for="id in listWeapon" :itemCarac="listStuff.weapons[id]"
                         :listEffect="allstuff.effect"
+                        :key="id"
                         typeItem="weapon"></render-one>
         </div>
         <h2>chips stats</h2>
@@ -11,6 +12,7 @@
 
             <render-one class="chipChild" v-for="id in listChip" :itemCarac="listStuff.chips[id]"
                         :listEffect="allstuff.effect"
+                        :key="id"
                         typeItem="chip"></render-one>
         </div>
     </div>

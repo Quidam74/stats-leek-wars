@@ -3,7 +3,7 @@
         <div class="item-mainData">
             <img class="item-img" :src="require(`@/assets/img/${type}/${item.name}.png`)" :data-id="item.id">
             <div>
-                <span>{{item.name}}</span>
+                <span>{{item.name}} {{item.id}}</span>
                 <span>cost : {{item.cost}} TP</span>
             </div>
         </div>
@@ -71,7 +71,6 @@
       },
       getStatValue (id) {
         let effect = this.findEffect(id)
-        console.log(effect.name)
         if (effect.name === 'EFFECT_DAMAGE') {
           return this.$store.getters.getStrength / 100
         } else if (effect.name === 'EFFECT_HEAL' || effect.name === 'EFFECT_BOOST_MAX_LIFE') {
@@ -94,9 +93,6 @@
           return this.$store.getters.getMagic / 100
         } else if (effect.name === ('EFFECT_VULNERABILITY')) {
           return this.$store.getters.getMagic / 100
-        } else {
-          console.log(effect.name)
-          return 50
         }
       },
       getStatName (id) {
