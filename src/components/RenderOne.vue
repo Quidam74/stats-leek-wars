@@ -3,7 +3,7 @@
         <div class="item-mainData">
             <img class="item-img" :src="require(`@/assets/img/${type}/${item.name}.png`)" :data-id="item.id">
             <div>
-                <span>{{item.name}} {{item.id}}</span>
+                <span>{{item.name}}</span>
                 <span>cost : {{item.cost}} TP</span>
             </div>
         </div>
@@ -16,6 +16,8 @@
                 <span>{{getStatName(effect.id)}} max : {{calcMax(effect) | round}}</span>
                 <span>effect min per TP : {{calcPaRatioMin(effect) | round2}}</span>
                 <span>effect max per TP : {{calcPaRatioMax(effect) | round2}}</span>
+                <span>{{getStatName(effect.id)}} critique min : {{calcCritiqueMin(effect) | round}}</span>
+                <span>{{getStatName(effect.id)}} critique max : {{calcCritiqueMax(effect) | round}}</span>
             </div>
         </div>
     </div>
@@ -63,6 +65,12 @@
       },
       calcMax (effect) {
         return effect.value1 + effect.value2 + (effect.value1 + effect.value2) * this.getStatValue(effect.id)
+      },
+      calcCritiqueMin (effect) {
+        return this.calcMin(effect) * 1.4
+      },
+      calcCritiqueMax (effect) {
+        return this.calcMax(effect) * 1.4
       },
       findEffect (id) {
         return this.effects.find((elem) => {
