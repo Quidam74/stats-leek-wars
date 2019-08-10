@@ -3,19 +3,23 @@
         <img class="stat-img" :src="require(`@/assets/img/stats/${stat}.png`)">
         <h3 class="stat-name">{{stat}}</h3>
         <input v-on:change="setStoreValue" class="stat-input" type="number" v-model="value">
-        <div v-on:click="addFixValue(1)">+1</div>
-        <div v-on:click="addFixValue(10)">+10</div>
-        <div v-on:click="addFixValue(100)">+100</div>
+        <div class="stat-rapideChange">
+            <div v-on:click="addFixValue(1)">+1</div>
+            <div v-on:click="addFixValue(10)">+10</div>
+            <div v-on:click="addFixValue(100)">+100</div>
+        </div>
     </div>
     <div class="stat" v-else-if="stat ==='level'">
         <div class="stat-img"></div>
         <h3 class="stat-name">{{stat}}</h3>
         <input v-on:change="setStoreValue" class="stat-input" type="number" v-model="value">
+        <div class="stat-rapideChange"></div>
     </div>
     <div class="stat" v-else-if="stat ==='capital'">
         <div class="stat-img"></div>
         <h3 class="stat-name">{{stat}}</h3>
         <input disabled="disabled" class="stat-input" type="number" v-model="value">
+        <div class="stat-rapideChange"></div>
     </div>
 </template>
 
@@ -207,6 +211,21 @@
         justify-content: space-between;
         margin: 10px 0;
 
+        &-rapideChange {
+            display: flex;
+            width: 131px;
+            div{
+                margin: 0 5px;
+                padding: 5px;
+                cursor: pointer;
+                /*background-color: red;*/
+            }
+        }
+
+        &-name{
+            width: 74px;
+            text-align: center;
+        }
         &-img {
             height: 30px;
             width: 30px;
@@ -215,6 +234,7 @@
         &-input {
             border: solid 1px black;
             padding: 0 10px;
+            width: 100px;
         }
     }
 
