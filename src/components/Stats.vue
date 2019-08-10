@@ -1,6 +1,6 @@
 <template>
     <div class="overview-stats">
-        <stats-line v-for="item in stats" :typeStats="item"></stats-line>
+        <stats-line :key="watcher+item" v-on:capitalCalc="capitalCalc" v-for="item in stats" :typeStats="item"></stats-line>
     </div>
 </template>
 
@@ -25,7 +25,13 @@
           10: 'mp',
           11: 'tp',
           12: 'capital'
-        }
+        },
+        watcher: false
+      }
+    },
+    methods: {
+      capitalCalc () {
+        this.watcher = !this.watcher
       }
     }
   }

@@ -35,14 +35,14 @@
       }
     },
     mounted () {
-      this.getValue()
+      this.getValue(this.stat)
     },
     methods: {
       addFixValue (number) {
         this.setStoreValue(number)
       },
-      getValue () {
-        switch (this.stat) {
+      getValue (stat) {
+        switch (stat) {
           case 'level':
             this.value = this.$store.getters.getLevel
             break
@@ -127,6 +127,7 @@
             this.$store.dispatch('setAgility', this.value)
             break
         }
+        this.$emit('capitalCalc')
       },
       getCapital () {
         let level = this.$store.getters.getLevel
@@ -152,21 +153,18 @@
         }
         let palier = 200
         let totalPoint = 0
-        while (Math.ceil(stat / palier) >= 0) {
-          if (Math.ceil(Math.ceil(stat / palier) === 1)) {
-            totalPoint += 0.5 * stat
-            stat -= 2000
-          } else {
-            if ((stat % palier) !== 0) {
-              totalPoint += (Math.ceil(stat / palier) - 1) * (stat - palier * (Math.ceil(stat / palier) - 1))
-              stat -= stat % palier
-            } else {
-              totalPoint += (Math.ceil(stat / palier) - 1) * palier
-              stat -= palier
-            }
-          }
+        if (stat < palier) {
+          totalPoint += stat * 0.5
         }
-        console.log(totalPoint)
+        if (stat >= palier && stat < palier * 2) {
+          totalPoint += 100 + stat - palier
+        }
+        if (stat >= palier * 2 && stat < palier * 3) {
+          totalPoint += 100 + palier + (stat - palier * 2) / 2
+        }
+        if (stat >= 600) {
+          totalPoint += 100 + palier + palier * 2 + (stat - palier * 3) / 2
+        }
         return totalPoint
       },
       calcCostLife (stat) {
