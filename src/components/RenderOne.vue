@@ -2,15 +2,13 @@
     <div class="item">
         <div class="item-mainData">
             <img class="item-img" :src="require(`@/assets/img/${type}/${item.name}.png`)" :data-id="item.id">
-            <div>
-                <span>{{item.name}}</span>
-                <span>cost : {{item.cost}} TP</span>
-            </div>
+            <h3>{{item.name}}</h3>
         </div>
         <div class="item-secondaryData">
+            <span>cost : {{item.cost}} TP</span>
             <span>range : {{item.min_range}} - {{item.max_range}}</span>
             <span v-if="item.cooldown">cooldown : {{item.cooldown }} Turn</span>
-            <div class="damageData" v-for="effect in item.effects">
+            <div class="item-effect" :class="getClassName(effect.id)" v-for="effect in item.effects">
                 <span v-if="effect.turns">duration : {{effect.turns}}</span>
                 <span>{{getStatName(effect.id)}} min : {{calcMin(effect) | round}}</span>
                 <span>{{getStatName(effect.id)}} max : {{calcMax(effect) | round}}</span>
@@ -103,6 +101,24 @@
           return this.$store.getters.getMagic / 100
         }
       },
+      getClassName (id) {
+        let effect = this.findEffect(id)
+        if (effect.name === 'EFFECT_DAMAGE') {
+          return 'damage'
+        } else if (effect.name === 'EFFECT_HEAL' || effect.name === 'EFFECT_BOOST_MAX_LIFE' || effect.name === 'EFFECT_RESURRECT') {
+          return 'heal'
+        } else if (effect.name.indexOf('_BUFF') !== -1 || effect.name === 'EFFECT_AFTEREFFECT') {
+          return 'buff'
+        } else if (effect.name.indexOf('_SHIELD') !== -1) {
+          return 'shield'
+        } else if (effect.name === ('EFFECT_DEBUFF') || effect.name.indexOf('_SHACKLE') !== -1 || effect.name === 'EFFECT_POISON') {
+          return 'debuff'
+        } else if (effect.name.indexOf('_DEBUFF') !== -1 || effect.name === ('EFFECT_VULNERABILITY')) {
+          return 'usefull'
+        } else if (effect.name === 'EFFECT_DAMAGE_RETURN') {
+          return 'reflect'
+        }
+      },
       getStatName (id) {
         let effect = this.findEffect(id).name
         if (effect === 'EFFECT_DAMAGE') {
@@ -136,24 +152,46 @@
 </script>
 
 <style scoped lang="scss">
+    @mixin bgOpacityAfter($color) {
+        &:after {
+            content: '';
+            width: calc(100% + 20px);
+            height: 40px;
+            background-color: $color;
+            position: relative;
+            top: calc(-100% + 40px);
+            left: -10px;
+            opacity: 0.3;
+        }
+    }
+
     .item {
         background-color: #eee;
-        margin: 10px;
-        padding: 10px;
         display: flex;
         flex-direction: column;
+        width: 24%;
+        margin: 10px auto;
+
+        &:nth-child(4n) {
+            margin-right: 0px;
+        }
+
+        &:nth-child(4n+1) {
+            margin-left: 0px;
+        }
 
         &-mainData {
             display: flex;
+            padding: 10px;
 
             .item-img {
                 width: 60px;
             }
 
-            div {
+            h3 {
+                margin: 0;
                 margin-left: 10px;
-                display: flex;
-                flex-direction: column;
+                text-transform: capitalize;
             }
         }
 
@@ -162,9 +200,42 @@
             display: flex;
             flex-direction: column;
 
-            .damageData {
+            padding: 0 10px;
+
+            .item-effect {
                 display: flex;
                 flex-direction: column;
+                margin-bottom: -40px;
+
+                @include bgOpacityAfter(#eeeeee);
+
+                &.damage {
+                    @include bgOpacityAfter(#842D00);
+                }
+
+                &.heal {
+                    @include bgOpacityAfter(#5EBE00);
+                }
+
+                &.buff {
+                    @include bgOpacityAfter(#000093);
+                }
+
+                &.shield {
+                    @include bgOpacityAfter(#FE7700);
+                }
+
+                &.debuff {
+                    @include bgOpacityAfter(#890077);
+                }
+
+                &.usefull {
+                    @include bgOpacityAfter(#C4C4C4);
+                }
+
+                &.reflect {
+                    @include bgOpacityAfter(#1288F6);
+                }
             }
         }
     }
