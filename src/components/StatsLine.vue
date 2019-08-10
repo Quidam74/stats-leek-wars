@@ -3,6 +3,9 @@
         <img class="stat-img" :src="require(`@/assets/img/stats/${stat}.png`)">
         <h3 class="stat-name">{{stat}}</h3>
         <input v-on:change="setStoreValue" class="stat-input" type="number" v-model="value">
+        <div v-on:click="addFixValue(1)">+1</div>
+        <div v-on:click="addFixValue(10)">+10</div>
+        <div v-on:click="addFixValue(100)">+100</div>
     </div>
     <div class="stat" v-else-if="stat ==='level'">
         <div class="stat-img"></div>
@@ -12,7 +15,7 @@
     <div class="stat" v-else-if="stat ==='capital'">
         <div class="stat-img"></div>
         <h3 class="stat-name">{{stat}}</h3>
-        <input class="stat-input" type="number" v-model="value">
+        <input disabled="disabled" class="stat-input" type="number" v-model="value">
     </div>
 </template>
 
@@ -35,6 +38,9 @@
       this.getValue()
     },
     methods: {
+      addFixValue (number) {
+        this.setStoreValue(number)
+      },
       getValue () {
         switch (this.stat) {
           case 'level':
@@ -75,7 +81,17 @@
             break
         }
       },
-      setStoreValue () {
+      setStoreValue (addedNumber = 0) {
+        if (typeof addedNumber !== 'number') {
+          addedNumber = null
+        } else {
+          this.value = parseInt(parseInt(this.value) + parseInt(addedNumber))
+        }
+        if (isNaN(this.value)) {
+          console.log(this.value)
+          this.value = 0
+        }
+
         switch (this.stat) {
           case 'level':
             this.$store.dispatch('setLevel', this.value)
@@ -150,6 +166,7 @@
             }
           }
         }
+        console.log(totalPoint)
         return totalPoint
       },
       calcCostLife (stat) {

@@ -1,17 +1,17 @@
 import * as types from '@/store/mutationTypes'
 
 const state = {
-  level: null,
-  frequency: null,
-  life: null,
-  magic: null,
-  mp: null,
-  resistance: null,
-  science: null,
-  strength: null,
-  tp: null,
-  wisdom: null,
-  agility: null
+  level: 1,
+  frequency: 0,
+  life: 0,
+  magic: 0,
+  mp: 0,
+  resistance: 0,
+  science: 0,
+  strength: 0,
+  tp: 0,
+  wisdom: 0,
+  agility: 0
 }
 
 const mutations = {

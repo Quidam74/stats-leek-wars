@@ -68,7 +68,7 @@
       }
     },
     watch: {
-      isVisible: function (newVal, oldVal) { // watch it
+      isVisible: function (newVal) { // watch it
         this.visible = newVal
       }
     },
