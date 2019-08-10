@@ -1,5 +1,6 @@
 <template>
     <div class="overview-stats">
+        <h2>Caractéristiques</h2>
         <stats-line :key="watcher+item" v-on:capitalCalc="capitalCalc" v-for="item in stats" :typeStats="item"></stats-line>
     </div>
 </template>
@@ -37,6 +38,6 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

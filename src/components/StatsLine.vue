@@ -207,9 +207,14 @@
 
 <style scoped lang="scss">
     .stat {
+        background-color: #eeeeee;
         display: flex;
         justify-content: space-between;
-        margin: 10px 0;
+        align-items: center;
+        padding: 10px 15px;
+        &:nth-of-type(1){
+           padding-top: 30px;
+        }
 
         &-rapideChange {
             display: flex;
@@ -218,12 +223,15 @@
                 margin: 0 5px;
                 padding: 5px;
                 cursor: pointer;
-                /*background-color: red;*/
+                background-color: #5fad1b;
+                color: #ffffff;
+                border-radius: 5px;
             }
         }
 
         &-name{
             width: 74px;
+            margin: 0;
             text-align: center;
         }
         &-img {
@@ -233,7 +241,7 @@
 
         &-input {
             border: solid 1px black;
-            padding: 0 10px;
+            padding: 10px;
             width: 100px;
         }
     }

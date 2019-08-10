@@ -1,5 +1,6 @@
 <template>
     <main v-if="fetch!==null && fetch.weapons !=='' && fetch.chips !==''&& fetch.effect !== Array()">
+        <h1 class="mainTitle">RestatMe !</h1>
         <div class="overview">
             <stats></stats>
             <div class="overview-leek"><img src="@/assets/img/big_leek_2_white.png"></div>
@@ -67,8 +68,25 @@
 </script>
 
 <style lang="scss">
+    @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+
+    * {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+        margin: 0
+    }
+
     main {
         padding: 30px;
+        background-color: #333333;
+    }
+
+    .mainTitle {
+        text-align: center;
+        color: #eeeeee;
+        margin-top: 0px;
     }
 
     .overview {
@@ -76,13 +94,27 @@
         width: 100%;
 
         &-stats {
-            width: 30%;
+            width: 35%;
+            background-color: #2A2A2A;
+
+            h2 {
+                height: 0px;
+                padding: 0 10px;
+                margin: 0;
+                width: 180px;
+                line-height: 38px;
+                border-bottom: 40px solid #606060;
+                border-left: 0px solid transparent;
+                border-right: 25px solid transparent;
+                background-color: transparent;
+                color: #ffffff;
+            }
+
         }
 
         &-leek {
-            width: 45%;
+            width: 40%;
             display: flex;
-            height: 400px;
 
             img {
                 height: 400px;
@@ -95,6 +127,8 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
+            position: absolute;
+            right: 0;
         }
     }
 

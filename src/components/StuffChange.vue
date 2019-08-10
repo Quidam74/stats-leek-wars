@@ -1,6 +1,6 @@
 <template>
-    <div v-show="visible" class="stufff" :data-type="type">
-        <h3 class="stuff-title">{{type}} Change</h3>
+    <div v-show="true" class="stufff" :data-type="type">
+        <div class="stufff-title"><h2>{{type}} Changer</h2></div>
         <div class="filter" v-if="type==='chip'">
             <span class="filter-item" v-for="typePuce in listTypePuce"
                   :data-idtype="JSON.stringify(typePuce.id)" v-on:click="changeFilter($event)">{{typePuce.name}}</span>
@@ -94,13 +94,27 @@
 
 <style scoped lang="scss">
     .stufff {
-
-        background-color: white;
         &-title {
+            background-color: #2A2A2A;
+
+            h2 {
+                height: 0px;
+                padding: 0 10px;
+                margin: 0;
+                width: 185px;
+                line-height: 38px;
+                border-bottom: 40px solid #606060;
+                border-left: 0px solid transparent;
+                border-right: 25px solid transparent;
+                background-color: transparent;
+                color: #ffffff;
+            }
         }
 
         &-list {
-            padding: 0px;
+            padding: 16px;
+            margin: 0;
+            background-color: #eeeeee;
             list-style: none;
             display: flex;
             flex-wrap: wrap;
@@ -118,17 +132,21 @@
         .filter {
             display: flex;
             flex-wrap: wrap;
+            padding: 16px;
+            margin: 0;
+            background-color: #eeeeee;
 
             &-item {
                 cursor: pointer;
-                background-color: #eeeeee;
+                background-color: #606060;
+                color: #eeeeee;
                 padding: 2px 5px;
                 margin: 3px 5px;
-                transition: color .3s, background-color .3s;
+                border-radius: 5px;
+                transition: background-color .3s;
 
                 &.selected {
                     background-color: #5fad1b;
-                    color: white;
                 }
             }
         }
