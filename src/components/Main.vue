@@ -87,9 +87,10 @@
         display: flex;
         width: 100%;
 
-        &-stats{
+        &-stats {
             width: 35%;
         }
+
         &-leek {
             width: 40%;
             display: flex;
@@ -107,6 +108,37 @@
             align-items: flex-end;
             position: absolute;
             right: 0;
+        }
+    }
+
+    @media only screen and (max-width: 1200px) {
+        .overview {
+            &-stats {
+                width: 50%;
+            }
+
+            &-leek {
+                display: none;
+            }
+
+            &-stuff {
+                width: 50%;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 850px) {
+        .overview {
+            flex-wrap: wrap;
+
+            &-stats {
+                width: 100%;
+            }
+
+            &-stuff {
+                width: 50%;
+                top: 750px
+            }
         }
     }
 

@@ -44,6 +44,10 @@
 
 <style scoped lang="scss">
     .calc {
+        @media only screen and (max-width: 850px) {
+            margin-top: 700px;
+        }
+
         &-header {
             background-color: #2A2A2A;
             margin-top: 30px;
@@ -81,5 +85,6 @@
                 /*min-width: 18%;*/
             }
         }
+
     }
 </style>
