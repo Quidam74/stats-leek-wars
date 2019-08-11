@@ -2,14 +2,14 @@ import * as types from '@/store/mutationTypes'
 
 const state = {
   level: 1,
-  frequency: 0,
+  frequency: 100,
   life: 0,
   magic: 0,
-  mp: 0,
+  mp: 3,
   resistance: 0,
   science: 0,
   strength: 0,
-  tp: 0,
+  tp: 10,
   wisdom: 0,
   agility: 0
 }

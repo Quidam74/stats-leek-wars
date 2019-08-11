@@ -54,7 +54,7 @@
             this.value = this.$store.getters.getFrequency
             break
           case 'life':
-            this.value = this.$store.getters.getLife
+            this.value = this.$store.getters.getLife + this.$store.getters.getLevel * 3 + 100
             break
           case 'magic':
             this.value = this.$store.getters.getMagic
@@ -92,7 +92,6 @@
           this.value = parseInt(parseInt(this.value) + parseInt(addedNumber))
         }
         if (isNaN(this.value)) {
-          console.log(this.value)
           this.value = 0
         }
 
@@ -104,7 +103,7 @@
             this.$store.dispatch('setFrequency', this.value)
             break
           case 'life':
-            this.$store.dispatch('setLife', this.value)
+            this.$store.dispatch('setLife', this.value - (this.$store.getters.getLevel * 3 + 100))
             break
           case 'magic':
             this.$store.dispatch('setMagic', this.value)
@@ -163,8 +162,8 @@
         if (stat >= palier && stat < palier * 2) {
           totalPoint += 100 + stat - palier
         }
-        if (stat >= palier * 2 && stat < palier * 3) {
-          totalPoint += 100 + palier + (stat - palier * 2) / 2
+        if (stat >= (palier * 2) && stat < palier * 3) {
+          totalPoint += 100 + palier + (stat - palier * 2) / 2 + 3
         }
         if (stat >= 600) {
           totalPoint += 100 + palier + palier * 2 + (stat - palier * 3) / 2
@@ -211,15 +210,17 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 15px;
-        &:nth-of-type(1){
-           padding-top: 30px;
+        padding: 5px 15px;
+
+        &:nth-of-type(1) {
+            padding-top: 30px;
         }
 
         &-rapideChange {
             display: flex;
             width: 131px;
-            div{
+
+            div {
                 margin: 0 5px;
                 padding: 5px;
                 cursor: pointer;
@@ -229,11 +230,12 @@
             }
         }
 
-        &-name{
+        &-name {
             width: 74px;
             margin: 0;
             text-align: center;
         }
+
         &-img {
             height: 30px;
             width: 30px;
