@@ -157,16 +157,16 @@
         let palier = 200
         let totalPoint = 0
         if (stat < palier) {
-          totalPoint += stat * 0.5
+          totalPoint += parseInt(stat) * 0.5
         }
         if (stat >= palier && stat < palier * 2) {
-          totalPoint += 100 + stat - palier
+          totalPoint += 100 + parseInt(stat) - palier
         }
         if (stat >= (palier * 2) && stat < palier * 3) {
-          totalPoint += 100 + palier + (stat - palier * 2) / 2 + 3
+          totalPoint += 100 + palier + (parseInt(stat) - palier * 2) / 2 + 3
         }
         if (stat >= 600) {
-          totalPoint += 100 + palier + palier * 2 + (stat - palier * 3) / 2
+          totalPoint += 100 + palier + palier * 2 + (parseInt(stat) - palier * 3) / 2
         }
         return totalPoint
       },
@@ -245,6 +245,12 @@
             border: solid 1px black;
             padding: 10px;
             width: 100px;
+
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
         }
     }
 
