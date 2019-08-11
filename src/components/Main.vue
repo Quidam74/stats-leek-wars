@@ -87,25 +87,9 @@
         display: flex;
         width: 100%;
 
-        &-stats {
+        &-stats{
             width: 35%;
-            background-color: #2A2A2A;
-
-            h2 {
-                height: 0px;
-                padding: 0 10px;
-                margin: 0;
-                width: 180px;
-                line-height: 38px;
-                border-bottom: 40px solid #606060;
-                border-left: 0px solid transparent;
-                border-right: 25px solid transparent;
-                background-color: transparent;
-                color: #ffffff;
-            }
-
         }
-
         &-leek {
             width: 40%;
             display: flex;

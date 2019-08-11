@@ -52,57 +52,57 @@ const mutations = {
 }
 const actions = {
   setLevel ({commit}, level) {
-    if (level) {
+    if (level || (level >= 1 && level <= 301)) {
       commit(types.SET_LEVEL, level)
     }
   },
   setFrequency ({commit}, frequency) {
-    if (frequency) {
+    if (frequency || frequency <= 0) {
       commit(types.SET_FREQUENCY, frequency)
     }
   },
   setLife ({commit}, life) {
-    if (life) {
+    if (life || life <= 0) {
       commit(types.SET_LIFE, life)
     }
   },
   setMagic ({commit}, magic) {
-    if (magic) {
+    if (magic || magic <= 0) {
       commit(types.SET_MAGIC, magic)
     }
   },
   setMp ({commit}, mp) {
-    if (mp) {
+    if (mp || mp <= 3) {
       commit(types.SET_MP, mp)
     }
   },
   setResistance ({commit}, resistance) {
-    if (resistance) {
+    if (resistance || resistance <= 0) {
       commit(types.SET_RESISTANCE, resistance)
     }
   },
   setScience ({commit}, science) {
-    if (science) {
+    if (science || science <= 0) {
       commit(types.SET_SCIENCE, science)
     }
   },
   setStrength ({commit}, strength) {
-    if (strength) {
+    if (strength || strength <= 0) {
       commit(types.SET_STRENGTH, strength)
     }
   },
   setTp ({commit}, tp) {
-    if (tp) {
+    if (tp || tp <= 10) {
       commit(types.SET_TP, tp)
     }
   },
   setWisdom ({commit}, wisdom) {
-    if (wisdom) {
+    if (wisdom || wisdom <= 0) {
       commit(types.SET_WISDOM, wisdom)
     }
   },
   setAgility ({commit}, agility) {
-    if (agility) {
+    if (agility || agility <= 0) {
       commit(types.SET_AGILITY, agility)
     }
   }
