@@ -69,7 +69,8 @@
     }
 
     body {
-        margin: 0
+        margin: 0;
+        overflow-x: hidden;
     }
 
     main {
