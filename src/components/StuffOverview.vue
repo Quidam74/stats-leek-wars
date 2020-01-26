@@ -1,11 +1,11 @@
 <template>
     <div class="currentStuff">
         <div class="currentStuff-header">
-            <h3 class="currentStuff-title">{{type}} Equiped</h3>
-            <span class="currentStuff-changeButton" v-on:click="displayChangePannel">Change</span>
+            <h2 class="currentStuff-title">{{type}} équipé</h2>
+            <span class="currentStuff-changeButton" v-on:click="displayChangePannel">Changer</span>
         </div>
         <ul class="currentStuff-list">
-            <li v-for="item in stuff" v-on:click="deleteItem(item)">
+            <li v-for="item in stuff" v-on:click="deleteItem(item)" :key="item">
                 <img :src="require(`@/assets/img/${type}/${listStuff[item].name}.png`)">
             </li>
         </ul>
@@ -26,7 +26,6 @@
       }
     },
     mounted () {
-      console.log(this.allStuff)
       if (this.type === 'weapon') {
         this.stuff = this.$store.getters.getLeekWeapon
       } else {
@@ -48,8 +47,10 @@
       deleteItem (id) {
         if (this.type === 'chip') {
           this.$store.dispatch('removeLeekChip', id)
+          this.stuff = this.$store.getters.getLeekChip
         } else if (this.type === 'weapon') {
           this.$store.dispatch('removeLeekWeapon', id)
+          this.stuff = this.$store.getters.getLeekWeapon
         }
       }
     }
@@ -58,24 +59,41 @@
 
 <style scoped lang="scss">
     .currentStuff {
+        width: 100%;
+
         &-title {
+            height: 0px;
+            padding: 0 10px;
+            margin: 0;
+            line-height: 38px;
+            border-bottom: 40px solid #606060;
+            border-left: 0px solid transparent;
+            border-right: 25px solid transparent;
+            background-color: transparent;
+            color: #ffffff;
         }
 
         &-header {
             display: flex;
             justify-content: space-between;
+            background-color: #2A2A2A;
         }
 
         &-changeButton {
             background-color: #5fad1b;
             color: white;
-            padding: 2px 5px;
-            margin: 3px 5px;
             cursor: pointer;
+            line-height: 30px;
+            padding: 0 10px;
+            height: 30px;
+            border-radius: 5px;
+            margin: 5px 10px;
         }
 
         &-list {
-            padding: 0px;
+            background-color: #eeeeee;
+            padding: 16px;
+            margin: 0;
             list-style: none;
             display: flex;
             flex-wrap: wrap;
@@ -84,7 +102,7 @@
                 padding: 10px;
 
                 img {
-                    width: 60px;
+                    width: 50px;
                     height: auto;
                 }
             }
