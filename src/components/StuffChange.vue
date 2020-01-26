@@ -7,7 +7,7 @@
         </div>
         <ul class="stufff-list">
             <li v-for="item in dataList" v-on:click="addItem(item.id)"
-                v-if="(type==='weapon' || selectedType.includes(item.effects[0].id))&&item.level<=$store.getters.getLevel">
+                v-if="(type==='weapon' || selectedType.includes(item.effects[0].id)) && item.level<=$store.getters.getLevel && item.name !=='vampirization'">
                 <img :src="require(`@/assets/img/${type}/${item.name}.png`)" :data-id="item.id">
             </li>
         </ul>

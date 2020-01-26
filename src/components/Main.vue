@@ -40,7 +40,7 @@
       // this.$store.dispatch('addLeekChip', 97)
       // this.$store.dispatch('addLeekChip', 98)
       // stats
-      // this.$store.dispatch('setLevel', 148)
+      this.$store.dispatch('setLevel', 301)
       // this.$store.dispatch('setFrequency', 101)
       // this.$store.dispatch('setLife', 700)
       // this.$store.dispatch('setMagic', 402)
