@@ -15,6 +15,9 @@ const mutations = {
   [types.REMOVE_LEEKCHIP_TO_LIST] (state, leekChip) {
     let index = state.leekChip.indexOf(leekChip)
     state.leekChip.splice(index, 1)
+  },
+  [types.REMOVE_LEEKCHIP_SUB_TO_LEVEL] (state, level) {
+    console.log(level)
   }
 }
 
@@ -30,6 +33,10 @@ const actions = {
       commit(types.REMOVE_LEEKCHIP_TO_LIST, leekChip)
     }
   }
+  // ,
+  // removeLeekChipSubToLevel ({commit}, level) {
+  //   commit(types.REMOVE_LEEKCHIP_SUB_TO_LEVEL, level)
+  // }
 }
 
 const getters = {
