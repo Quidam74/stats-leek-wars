@@ -1,7 +1,10 @@
 import * as types from '@/store/mutationTypes'
 
-const maxLevel = 301
 const MinLevel = 1
+const maxLevel = 301
+const minFreq = 100
+const minMp = 3
+const minTp = 10
 const state = {
   level: 1,
   frequency: 100,
@@ -62,19 +65,31 @@ const mutations = {
 
 }
 const actions = {
-  setLevel ({commit}, level) {
+  setLevel ({commit, dispatch}, level) {
     if (level || (level >= 1 && level <= 301)) {
       commit(types.SET_LEVEL, level)
+      dispatch('setLife')
     }
   },
   setFrequency ({commit}, frequency) {
-    if (frequency || frequency <= 0) {
-      commit(types.SET_FREQUENCY, frequency)
+    if (frequency) {
+      if (frequency >= minFreq) {
+        commit(types.SET_FREQUENCY, frequency)
+      } else {
+        commit(types.SET_FREQUENCY, minFreq)
+        console.log('error : frequency out ouf bound')
+      }
     }
   },
-  setLife ({commit}, life) {
-    if (life || life <= 0) {
-      commit(types.SET_LIFE, life)
+  setLife ({commit, getters}, life) {
+    let minLife = (getters.getLevel - 1) * 3 + 100
+    if (life === undefined) {
+      commit(types.SET_LIFE, minLife)
+    } else if (life >= minLife) {
+      commit(types.SET_LIFE, parseInt(life))
+    } else {
+      commit(types.SET_LIFE, parseInt(minLife))
+      console.log('error : life out ouf bound')
     }
   },
   setMagic ({commit}, magic) {
@@ -83,8 +98,13 @@ const actions = {
     }
   },
   setMp ({commit}, mp) {
-    if (mp || mp <= 3) {
-      commit(types.SET_MP, mp)
+    if (mp) {
+      if (mp >= minMp) {
+        commit(types.SET_MP, mp)
+      } else {
+        commit(types.SET_MP, minMp)
+        console.log('error : mp out ouf bound')
+      }
     }
   },
   setResistance ({commit}, resistance) {
@@ -103,8 +123,13 @@ const actions = {
     }
   },
   setTp ({commit}, tp) {
-    if (tp || tp <= 10) {
-      commit(types.SET_TP, tp)
+    if (tp) {
+      if (tp >= minTp) {
+        commit(types.SET_TP, tp)
+      } else {
+        commit(types.SET_TP, minTp)
+        console.log('error : tp out ouf bound')
+      }
     }
   },
   setWisdom ({commit}, wisdom) {

@@ -54,7 +54,7 @@
             this.value = this.$store.getters.getFrequency
             break
           case 'life':
-            this.value = this.$store.getters.getLife + (this.$store.getters.getLevel - 1) * 3 + 100
+            this.value = this.$store.getters.getLife
             break
           case 'magic':
             this.value = this.$store.getters.getMagic
@@ -103,7 +103,7 @@
             this.$store.dispatch('setFrequency', this.value)
             break
           case 'life':
-            this.$store.dispatch('setLife', this.value - (this.$store.getters.getLevel * 3 + 100))
+            this.$store.dispatch('setLife', this.value)
             break
           case 'magic':
             this.$store.dispatch('setMagic', this.value)
@@ -170,15 +170,16 @@
         }
         return totalPoint
       },
-      calcCostLife (stat) {
+      calcCostLife (effectiveLife) {
+        let effectifUseInPoint = effectiveLife - ((this.$store.getters.getLevel - 1) * 3 + 100)
         let palier = 1000
         let totalPoint = 0
-        if (stat < 1000) {
-          totalPoint += stat / 4
-        } else if (stat >= 1000 && stat < 2000) {
-          totalPoint = palier / 4 + (stat - palier) / 3
-        } else if (stat >= 2000) {
-          totalPoint = palier / 4 + palier / 3 + (stat - palier * 2) / 2
+        if (effectifUseInPoint < 1000) {
+          totalPoint += effectifUseInPoint / 4
+        } else if (effectifUseInPoint >= 1000 && effectifUseInPoint < 2000) {
+          totalPoint = palier / 4 + (effectifUseInPoint - palier) / 3
+        } else if (effectifUseInPoint >= 2000) {
+          totalPoint = palier / 4 + palier / 3 + (effectifUseInPoint - palier * 2) / 2
         }
         return totalPoint
       },
