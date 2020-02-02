@@ -54,7 +54,7 @@
             this.value = this.$store.getters.getFrequency
             break
           case 'life':
-            this.value = this.$store.getters.getLife + this.$store.getters.getLevel * 3 + 100
+            this.value = this.$store.getters.getLife + (this.$store.getters.getLevel - 1) * 3 + 100
             break
           case 'magic':
             this.value = this.$store.getters.getMagic
