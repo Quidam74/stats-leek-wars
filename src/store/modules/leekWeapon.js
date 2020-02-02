@@ -6,7 +6,11 @@ const state = {
 
 const mutations = {
   [types.ADD_LEEKWEAPON_TO_LIST] (state, leekWeapon) {
-    state.leekWeapon.push(leekWeapon)
+    if (!state.leekWeapon.includes(leekWeapon)) {
+      state.leekWeapon.push(leekWeapon)
+    } else {
+      console.log('error to many chips')
+    }
   },
   [types.REMOVE_LEEKWEAPON_TO_LIST] (state, leekWeapon) {
     let index = state.leekWeapon.indexOf(leekWeapon)
