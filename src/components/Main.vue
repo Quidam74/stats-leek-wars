@@ -6,7 +6,7 @@
             <div class="overview-leek"><img src="@/assets/img/big_leek_2_white.png"></div>
             <div class="overview-stuff">
                 <stuff :listData="fetch.weapons"
-                       typeData="weapon">>
+                       typeData="weapon">
                 </stuff>
                 <stuff :listData="fetch.chips"
                        typeData="chip"></stuff>

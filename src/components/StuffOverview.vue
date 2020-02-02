@@ -25,19 +25,21 @@
         default: {}
       }
     },
-    mounted () {
-      if (this.type === 'weapon') {
-        this.stuff = this.$store.getters.getLeekWeapon
-      } else {
-        this.stuff = this.$store.getters.getLeekChip
-      }
-    },
     data () {
       return {
         id: '',
         type: this.typeStuff,
-        stuff: null,
+        lol: null,
         allStuff: this.listStuff
+      }
+    },
+    computed: {
+      stuff () {
+        if (this.type === 'weapon') {
+          return this.$store.getters.getLeekWeapon
+        } else {
+          return this.$store.getters.getLeekChip
+        }
       }
     },
     methods: {
@@ -53,6 +55,9 @@
           this.stuff = this.$store.getters.getLeekWeapon
         }
       }
+    },
+    watch: {
+      stuff: () => console.log('aaa')
     }
   }
 </script>
