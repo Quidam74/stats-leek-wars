@@ -83,9 +83,9 @@
       },
       addItem (id) {
         if (this.type === 'weapon') {
-          this.$store.dispatch('addLeekWeapon', id)
+          this.$store.dispatch('addLeekWeapon', this.data[id])
         } else if (this.type === 'chip') {
-          this.$store.dispatch('addLeekChip', id)
+          this.$store.dispatch('addLeekChip', this.data[id])
         }
       }
     }

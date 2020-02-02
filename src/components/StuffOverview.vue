@@ -5,8 +5,8 @@
             <span class="currentStuff-changeButton" v-on:click="displayChangePannel">Changer</span>
         </div>
         <ul class="currentStuff-list">
-            <li v-for="item in stuff" v-on:click="deleteItem(item)" :key="item">
-                <img :src="require(`@/assets/img/${type}/${listStuff[item].name}.png`)">
+            <li v-for="item in stuff" v-on:click="deleteItem(item)">
+                <img :src="require(`@/assets/img/${type}/${item.name}.png`)">
             </li>
         </ul>
     </div>
@@ -44,12 +44,12 @@
       displayChangePannel () {
         this.$emit('displayChangePannel')
       },
-      deleteItem (id) {
+      deleteItem (item) {
         if (this.type === 'chip') {
-          this.$store.dispatch('removeLeekChip', id)
+          this.$store.dispatch('removeLeekChip', item)
           this.stuff = this.$store.getters.getLeekChip
         } else if (this.type === 'weapon') {
-          this.$store.dispatch('removeLeekWeapon', id)
+          this.$store.dispatch('removeLeekWeapon', item)
           this.stuff = this.$store.getters.getLeekWeapon
         }
       }
