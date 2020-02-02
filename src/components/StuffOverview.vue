@@ -55,9 +55,6 @@
           this.stuff = this.$store.getters.getLeekWeapon
         }
       }
-    },
-    watch: {
-      stuff: () => console.log('aaa')
     }
   }
 </script>

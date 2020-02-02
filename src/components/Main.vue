@@ -42,7 +42,7 @@
       // stats
       this.$store.dispatch('setLevel', 301)
       // this.$store.dispatch('setFrequency', 101)
-      // this.$store.dispatch('setLife', 700)
+      // this.$store.dispatch('setLife', 1000)
       // this.$store.dispatch('setMagic', 402)
       // this.$store.dispatch('setMp', 5)
       // this.$store.dispatch('setResistance', 100)
