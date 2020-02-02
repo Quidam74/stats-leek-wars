@@ -1,5 +1,7 @@
 import * as types from '@/store/mutationTypes'
 
+const maxLevel = 301
+const MinLevel = 1
 const state = {
   level: 1,
   frequency: 100,
@@ -16,7 +18,16 @@ const state = {
 
 const mutations = {
   [types.SET_LEVEL] (state, level) {
-    state.level = level
+    if (level >= MinLevel && level <= maxLevel) {
+      state.level = level
+    } else {
+      console.log('error : level out ouf bound')
+      if (level > maxLevel) {
+        state.level = maxLevel
+      } else if (level < MinLevel) {
+        state.level = MinLevel
+      }
+    }
   },
   [types.SET_FREQUENCY] (state, frequency) {
     state.frequency = frequency
