@@ -40,7 +40,7 @@
       resetStats () {
         this.$store.dispatch('setLevel', 1)
         this.$store.dispatch('setFrequency', 100)
-        this.$store.dispatch('setLife', 0)
+        this.$store.dispatch('setLife', 100)
         this.$store.dispatch('setMagic', 0)
         this.$store.dispatch('setMp', 3)
         this.$store.dispatch('setResistance', 0)
