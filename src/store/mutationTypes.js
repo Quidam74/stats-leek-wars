@@ -1,10 +1,11 @@
 // leekWeapon.js
 export const ADD_LEEKWEAPON_TO_LIST = 'leekWeapon/ADD_LEEKWEAPON_TO_LIST'
 export const REMOVE_LEEKWEAPON_TO_LIST = 'leekWeapon/REMOVE_LEEKWEAPON_TO_LIST'
+export const REMOVE_LEEKWEAPON_SUB_TO_LEVEL = 'leekChip/REMOVE_LEEKWEAPON_SUB_TO_LEVEL'
 // leekChip.js
 export const ADD_LEEKCHIP_TO_LIST = 'leekChip/ADD_LEEKWEAPON_TO_LIST'
 export const REMOVE_LEEKCHIP_TO_LIST = 'leekChip/REMOVE_LEEKCHIP_TO_LIST'
-
+export const REMOVE_LEEKCHIP_SUB_TO_LEVEL = 'leekChip/REMOVE_LEEKCHIP_SUB_TO_LEVEL'
 // leekStats.js
 export const SET_FREQUENCY = 'leekStats/SET_FREQUENCY'
 export const SET_LIFE = 'leekStats/SET_LIFE'

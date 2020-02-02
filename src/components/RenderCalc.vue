@@ -3,18 +3,16 @@
         <div class="calc-header">
             <h2>Weapons stats</h2></div>
         <div class="calc-weapon">
-            <render-one class="weaponChild" v-for="id in listWeapon" :itemCarac="listStuff.weapons[id]"
+            <render-one class="weaponChild" v-for="item in listWeapon" :itemCarac="item"
                         :listEffect="allstuff.effect"
-                        :key="id"
                         typeItem="weapon"></render-one>
         </div>
         <div class="calc-header">
             <h2>chips stats</h2></div>
         <div class="calc-chip">
 
-            <render-one class="chipChild" v-for="id in listChip" :itemCarac="listStuff.chips[id]"
+            <render-one class="chipChild" v-for="item in listChip" :itemCarac="item"
                         :listEffect="allstuff.effect"
-                        :key="id"
                         typeItem="chip"></render-one>
         </div>
     </div>

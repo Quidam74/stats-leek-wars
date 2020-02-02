@@ -5,8 +5,8 @@
             <span class="currentStuff-changeButton" v-on:click="displayChangePannel">Changer</span>
         </div>
         <ul class="currentStuff-list">
-            <li v-for="item in stuff" v-on:click="deleteItem(item)" :key="item">
-                <img :src="require(`@/assets/img/${type}/${listStuff[item].name}.png`)">
+            <li v-for="item in stuff" v-on:click="deleteItem(item)">
+                <img :src="require(`@/assets/img/${type}/${item.name}.png`)">
             </li>
         </ul>
     </div>
@@ -25,34 +25,39 @@
         default: {}
       }
     },
-    mounted () {
-      if (this.type === 'weapon') {
-        this.stuff = this.$store.getters.getLeekWeapon
-      } else {
-        this.stuff = this.$store.getters.getLeekChip
-      }
-    },
     data () {
       return {
         id: '',
         type: this.typeStuff,
-        stuff: null,
+        lol: null,
         allStuff: this.listStuff
+      }
+    },
+    computed: {
+      stuff () {
+        if (this.type === 'weapon') {
+          return this.$store.getters.getLeekWeapon
+        } else {
+          return this.$store.getters.getLeekChip
+        }
       }
     },
     methods: {
       displayChangePannel () {
         this.$emit('displayChangePannel')
       },
-      deleteItem (id) {
+      deleteItem (item) {
         if (this.type === 'chip') {
-          this.$store.dispatch('removeLeekChip', id)
+          this.$store.dispatch('removeLeekChip', item)
           this.stuff = this.$store.getters.getLeekChip
         } else if (this.type === 'weapon') {
-          this.$store.dispatch('removeLeekWeapon', id)
+          this.$store.dispatch('removeLeekWeapon', item)
           this.stuff = this.$store.getters.getLeekWeapon
         }
       }
+    },
+    watch: {
+      stuff: () => console.log('aaa')
     }
   }
 </script>
