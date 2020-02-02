@@ -15,6 +15,10 @@ const mutations = {
   [types.REMOVE_LEEKWEAPON_TO_LIST] (state, leekWeapon) {
     let index = state.leekWeapon.indexOf(leekWeapon)
     state.leekWeapon.splice(index, 1)
+  },
+  [types.REMOVE_LEEKWEAPON_SUB_TO_LEVEL] (state, level) {
+    state.leekWeapon = state.leekWeapon.filter(elem => elem.level <= level)
+    console.log(state.leekWeapon)
   }
 }
 

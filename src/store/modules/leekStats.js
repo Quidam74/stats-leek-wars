@@ -68,6 +68,7 @@ const actions = {
       }
       commit(types.SET_LEVEL, setLevel)
       commit(types.REMOVE_LEEKCHIP_SUB_TO_LEVEL, setLevel)
+      commit(types.REMOVE_LEEKWEAPON_SUB_TO_LEVEL, setLevel)
     }
   },
   setFrequency ({commit}, frequency) {
