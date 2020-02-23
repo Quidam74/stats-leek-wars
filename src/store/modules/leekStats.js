@@ -97,7 +97,7 @@ const actions = {
     }
   },
   setMagic ({commit}, magic) {
-    if (magic || magic <= 0) {
+    if (magic && magic >= 0) {
       commit(types.SET_MAGIC, magic)
     }
   },
@@ -112,17 +112,17 @@ const actions = {
     }
   },
   setResistance ({commit}, resistance) {
-    if (resistance || resistance <= 0) {
+    if (resistance && resistance >= 0) {
       commit(types.SET_RESISTANCE, resistance)
     }
   },
   setScience ({commit}, science) {
-    if (science || science <= 0) {
+    if (science && science >= 0) {
       commit(types.SET_SCIENCE, science)
     }
   },
   setStrength ({commit}, strength) {
-    if (strength || strength <= 0) {
+    if (strength && strength >= 0) {
       commit(types.SET_STRENGTH, strength)
     }
   },
@@ -137,12 +137,12 @@ const actions = {
     }
   },
   setWisdom ({commit}, wisdom) {
-    if (wisdom || wisdom <= 0) {
+    if (wisdom && wisdom >= 0) {
       commit(types.SET_WISDOM, wisdom)
     }
   },
   setAgility ({commit}, agility) {
-    if (agility || agility <= 0) {
+    if (agility && agility >= 0) {
       commit(types.SET_AGILITY, agility)
     }
   }
