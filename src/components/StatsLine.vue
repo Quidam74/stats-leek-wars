@@ -3,7 +3,7 @@
         <img class="stat-img" :src="require(`@/assets/img/stats/${stat}.png`)">
         <h3 class="stat-name">{{stat}}</h3>
         <input v-on:change="setStoreValue" class="stat-input" type="number" v-model="value">
-        <div class="stat-rapideChange">
+        <div v-if="stat !=='life'" class="stat-rapideChange">
             <div class="stat-rapideChangeButton" v-bind:class="{ 'stat-rapideChangeButton-disable': isAbleButton(1) }"
                  v-on:click="addFixValue(1,isAbleButton(1))">+1
             </div>
@@ -13,6 +13,18 @@
             <div class="stat-rapideChangeButton" v-bind:class="{ 'stat-rapideChangeButton-disable': isAbleButton(100) }"
                  v-on:click="addFixValue(100,isAbleButton(100))">
                 +100
+            </div>
+        </div>
+        <div v-else-if="stat ==='life'" class="stat-rapideChange">
+            <div class="stat-rapideChangeButton" v-bind:class="{ 'stat-rapideChangeButton-disable': isAbleButton(4) }"
+                 v-on:click="addFixValue(4,isAbleButton(4))">+4
+            </div>
+            <div class="stat-rapideChangeButton" v-bind:class="{ 'stat-rapideChangeButton-disable': isAbleButton(40) }"
+                 v-on:click="addFixValue(40,isAbleButton(40))">+40
+            </div>
+            <div class="stat-rapideChangeButton" v-bind:class="{ 'stat-rapideChangeButton-disable': isAbleButton(400) }"
+                 v-on:click="addFixValue(400,isAbleButton(400))">
+                +400
             </div>
         </div>
     </div>
