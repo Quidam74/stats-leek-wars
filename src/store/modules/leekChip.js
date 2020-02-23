@@ -9,7 +9,7 @@ const mutations = {
     if (!state.leekChip.includes(leekChip)) {
       state.leekChip.push(leekChip)
     } else {
-      console.log('error to many chips')
+      console.log('error too many chips')
     }
   },
   [types.REMOVE_LEEKCHIP_TO_LIST] (state, leekChip) {

@@ -1,12 +1,13 @@
 <template>
-    <div v-show="true" class="stufff" :data-type="type">
-        <div class="stufff-title"><h2>{{type}} Changer</h2></div>
+    <div v-show="true" class="changeStuff" :data-type="type">
+        <div class="changeStuff-title"><h2>{{type}} Changer</h2></div>
         <div class="filter" v-if="type==='chip'">
             <span class="filter-item" v-for="typePuce in listTypePuce"
                   :data-idtype="JSON.stringify(typePuce.id)" v-on:click="changeFilter($event)">{{typePuce.name}}</span>
         </div>
-        <ul class="stufff-list">
-            <li v-for="item in dataList" v-on:click="addItem(item.id)"
+        <ul class="changeStuff-list">
+            <li class="item" v-bind:class="{ 'item-disable': isEquiped(item) }" v-for="item in dataList"
+                v-on:click="addItem(item.id)"
                 v-if="(type==='weapon' || selectedType.includes(item.effects[0].id)) && item.level<=$store.getters.getLevel && item.name !=='vampirization'">
                 <img :src="require(`@/assets/img/${type}/${item.name}.png`)" :data-id="item.id">
             </li>
@@ -87,13 +88,16 @@
         } else if (this.type === 'chip') {
           this.$store.dispatch('addLeekChip', this.data[id])
         }
+      },
+      isEquiped (item) {
+        return this.typeStuff === 'weapon' ? this.$store.getters.getLeekWeapon.includes(item) : this.$store.getters.getLeekChip.includes(item)
       }
     }
   }
 </script>
 
 <style scoped lang="scss">
-    .stufff {
+    .changeStuff {
         &-title {
             background-color: #2A2A2A;
 
@@ -119,8 +123,12 @@
             display: flex;
             flex-wrap: wrap;
 
-            li {
+            .item {
                 padding: 10px;
+
+                &-disable {
+                    opacity: 0.3;
+                }
 
                 img {
                     width: 50px;
