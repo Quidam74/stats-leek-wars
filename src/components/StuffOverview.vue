@@ -34,11 +34,17 @@
       }
     },
     computed: {
-      stuff () {
-        if (this.type === 'weapon') {
-          return this.$store.getters.getLeekWeapon
-        } else {
-          return this.$store.getters.getLeekChip
+      stuff: {
+        // getter
+        get: function () {
+          if (this.type === 'weapon') {
+            return this.$store.getters.getLeekWeapon
+          } else {
+            return this.$store.getters.getLeekChip
+          }
+        },
+        // setter
+        set: function () {
         }
       }
     },

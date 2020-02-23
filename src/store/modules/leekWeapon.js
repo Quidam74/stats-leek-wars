@@ -9,7 +9,7 @@ const mutations = {
     if (!state.leekWeapon.includes(leekWeapon)) {
       state.leekWeapon.push(leekWeapon)
     } else {
-      console.log('error to many chips')
+      console.log('error too many weapon')
     }
   },
   [types.REMOVE_LEEKWEAPON_TO_LIST] (state, leekWeapon) {
